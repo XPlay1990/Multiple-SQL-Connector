@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: sql-connector
+  name: sql-connector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: sql-connector
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: sql-connector
+    spec:
+      containers:
+        image: janAdamczyk/sql-connector:0.0.1-SNAPSHOT
+        imagePullPolicy: IfNotPresent
+        name: sql-connector
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+      imagePullSecrets:
+        - name: containerregistry-secret
+status: {}

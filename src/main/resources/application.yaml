@@ -1,0 +1,31 @@
+server:
+  port: 9020
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    min-response-size: 1024
+spring:
+  application:
+    name: SQLConnector
+  jpa:
+    #    show-sql: true
+    hibernate:
+      ddl-auto: validate #create-drop
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    jdbcUrl: jdbc:mysql://mysql/shema?serverTimezone=UTC #&useSSL=false
+    username: user
+    password: password
+    initialization-mode: never
+  datasource2:
+    jdbcUrl: jdbc:mysql://mysql-2/schema?serverTimezone=UTC #&useSSL=false
+    username: user
+    password: password
+    initialization-mode: never
+logging:
+  level:
+    root: info #debug
+    org.hibernate:
+      SQL: debug
+    web: debug
